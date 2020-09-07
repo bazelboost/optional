@@ -1,0 +1,27 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+_public_hdrs = [
+    "include/boost/*.hpp",
+    "include/boost/optional/*.hpp",
+]
+
+cc_library(
+    name = "optional_internal",
+    hdrs = glob(["include/boost/**/*.hpp"], exclude = _public_hdrs),
+)
+
+cc_library(
+    name = "optional",
+    visibility = ["//visibility:public"],
+    includes = ["include"],
+    hdrs = glob(_public_hdrs),
+    deps = [
+        ":optional_internal",
+        "@boost//core",
+        "@boost//static_assert",
+        "@boost//throw_exception",
+        "@boost//type_traits",
+        "@boost//move",
+        "@boost//utility",
+    ],
+)
