@@ -17,11 +17,11 @@ cc_library(
     hdrs = glob(_public_hdrs),
     deps = [
         ":optional_internal",
-        "@boost//core",
-        "@boost//static_assert",
-        "@boost//throw_exception",
-        "@boost//type_traits",
-        "@boost//move",
-        "@boost//utility",
+        "@boost//libs/core",
+        "@boost//libs/static_assert",
+        "@boost//libs/throw_exception",
+        "@boost//libs/type_traits",
+        "@boost//libs/move",
+        "@boost//libs/utility",
     ],
 )
